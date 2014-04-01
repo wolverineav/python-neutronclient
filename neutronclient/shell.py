@@ -43,6 +43,7 @@ from neutronclient.neutron.v2_0.lb import healthmonitor as lb_healthmonitor
 from neutronclient.neutron.v2_0.lb import member as lb_member
 from neutronclient.neutron.v2_0.lb import pool as lb_pool
 from neutronclient.neutron.v2_0.lb import vip as lb_vip
+from neutronclient.neutron.v2_0.p_port import physicalport
 from neutronclient.neutron.v2_0 import metering
 from neutronclient.neutron.v2_0 import netpartition
 from neutronclient.neutron.v2_0 import network
@@ -217,6 +218,11 @@ COMMAND_V2 = {
     'firewall-create': firewall.CreateFirewall,
     'firewall-update': firewall.UpdateFirewall,
     'firewall-delete': firewall.DeleteFirewall,
+    'physical-port-list': physicalport.ListPhysicalPort,
+    'physical-port-show': physicalport.ShowPhysicalPort,
+    'physical-port-create': physicalport.CreatePhysicalPort,
+    'physical-port-update': physicalport.UpdatePhysicalPort,
+    'physical-port-delete': physicalport.DeletePhysicalPort,
     'cisco-credential-list': credential.ListCredential,
     'cisco-credential-show': credential.ShowCredential,
     'cisco-credential-create': credential.CreateCredential,

@@ -223,6 +223,8 @@ class Client(object):
     firewall_policy_remove_path = "/fw/firewall_policies/%s/remove_rule"
     firewalls_path = "/fw/firewalls"
     firewall_path = "/fw/firewalls/%s"
+    physicalports_path = "/physical_ports"
+    physicalport_path = "/physical_ports/%s"
     net_partitions_path = "/net-partitions"
     net_partition_path = "/net-partitions/%s"
 
@@ -246,6 +248,7 @@ class Client(object):
                      'firewall_rules': 'firewall_rule',
                      'firewall_policies': 'firewall_policy',
                      'firewalls': 'firewall',
+                     'physicalports': 'physicalport',
                      'metering_labels': 'metering_label',
                      'metering_label_rules': 'metering_label_rule',
                      'net_partitions': 'net_partition'
@@ -1016,6 +1019,34 @@ class Client(object):
         """Fetches a list of pools hosted by the loadbalancer agent."""
         return self.get((self.agent_path + self.LOADBALANCER_POOLS) %
                         lbaas_agent, params=_params)
+
+    @APIParamsCall
+    def list_physical_ports(self, retrieve_all=True, **_params):
+        """Fetches a list of all physical_ports for a tenant."""
+        # Pass filters in "params" argument to do_request
+
+        return self.list('physical_ports', self.physicalport_path, retrieve_all,
+                         **_params)
+
+    @APIParamsCall
+    def show_physical_port(self, physicalport, **_params):
+        """Fetches information of a certain physicalport."""
+        return self.get(self.physicalport_path % (physicalport), params=_params)
+
+    @APIParamsCall
+    def create_physical_port(self, body=None):
+        """Creates a new physicalport."""
+        return self.post(self.physicalports_path, body=body)
+
+    @APIParamsCall
+    def update_physical_port(self, physicalport, body=None):
+        """Updates a physicalport."""
+        return self.put(self.physicalport_path % (physicalport), body=body)
+
+    @APIParamsCall
+    def delete_physical_port(self, physicalport):
+        """Deletes the specified physicalport."""
+        return self.delete(self.physicalport_path % (physicalport))
 
     @APIParamsCall
     def list_service_providers(self, retrieve_all=True, **_params):
