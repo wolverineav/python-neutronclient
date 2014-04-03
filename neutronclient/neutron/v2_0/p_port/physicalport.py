@@ -26,7 +26,7 @@ class ListPhysicalPort(neutronv20.ListCommand):
 
     resource = 'physical_port'
     log = logging.getLogger(__name__ + '.ListPhysicalPort')
-    list_columns = ['id', 'name', 'mac', 'attachment']
+    list_columns = ['id', 'name', 'mac_address', 'attachment']
     _formatters = {}
     pagination_support = True
     sorting_support = True
@@ -67,7 +67,7 @@ class CreatePhysicalPort(neutronv20.CreateCommand):
                 'mac_address': parsed_args.mac_address,
                 'attachment': parsed_args.attachment,
                 'admin_state_up': parsed_args.admin_state,}, }
-        neutronv20.update_dict(parsed_args, body[self.resource], 
+        neutronv20.update_dict(parsed_args, body[self.resource],
                                ['name', 'tenant_id', 'port_id'])
         return body
 
@@ -78,6 +78,33 @@ class UpdatePhysicalPort(neutronv20.UpdateCommand):
     resource = 'physical_port'
     log = logging.getLogger(__name__ + '.UpdatePhysicalPort')
 
+    def add_known_arguments(self, parser):
+        parser.add_argument(
+            '--mac_address',
+            help=_('Mac Address of the physical port'))
+        parser.add_argument(
+            '--attachment',
+            help=_('Attachment of the physical port'))
+        parser.add_argument(
+            '--port_id',
+            help=_('Neutron port id for the physical port'))
+        parser.add_argument(
+            '--name',
+            help=_('Name for the physical port'))
+        parser.add_argument(
+            '--admin-state-down',
+            dest='admin_state',
+            action='store_false',
+            help=_('Set admin state up to false'))
+
+    def args2body(self, parsed_args):
+        body = {
+            self.resource: {
+                'admin_state_up': parsed_args.admin_state,}, }
+        neutronv20.update_dict(parsed_args, body[self.resource],
+                               ['mac_address', 'attachment', 'port_id',
+                                'name', 'tenant_id', 'port_id'])
+        return body
 
 class DeletePhysicalPort(neutronv20.DeleteCommand):
     """Delete a given physical port."""
