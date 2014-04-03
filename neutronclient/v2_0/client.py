@@ -223,8 +223,8 @@ class Client(object):
     firewall_policy_remove_path = "/fw/firewall_policies/%s/remove_rule"
     firewalls_path = "/fw/firewalls"
     firewall_path = "/fw/firewalls/%s"
-    physicalports_path = "/physical_ports"
-    physicalport_path = "/physical_ports/%s"
+    physicalports_path = "/physical-ports"
+    physicalport_path = "/physical-ports/%s"
     net_partitions_path = "/net-partitions"
     net_partition_path = "/net-partitions/%s"
 
@@ -1024,8 +1024,7 @@ class Client(object):
     def list_physical_ports(self, retrieve_all=True, **_params):
         """Fetches a list of all physical_ports for a tenant."""
         # Pass filters in "params" argument to do_request
-
-        return self.list('physical_ports', self.physicalport_path, retrieve_all,
+        return self.list('physical_ports', self.physicalports_path, retrieve_all,
                          **_params)
 
     @APIParamsCall

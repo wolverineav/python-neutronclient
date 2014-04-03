@@ -172,6 +172,9 @@ class UpdateQuota(neutronV20.NeutronCommand, show.ShowOne):
             '--floatingip', metavar='floatingips',
             help=_('The limit of floating IPs'))
         parser.add_argument(
+            '--physical-port', metavar='physical_ports',
+            help=_('The limit of physical ports'))
+        parser.add_argument(
             '--security-group', metavar='security_groups',
             help=_('The limit of security groups'))
         parser.add_argument(
