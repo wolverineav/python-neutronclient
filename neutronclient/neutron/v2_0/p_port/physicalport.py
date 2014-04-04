@@ -88,8 +88,8 @@ class UpdatePhysicalPort(neutronv20.UpdateCommand):
             '--attachment',
             help=_('Attachment of the physical port'))
         parser.add_argument(
-            '--port-id',
-            help=_('Neutron port id for the physical port'))
+            '--network-id',
+            help=_('Neutron network id for the physical port'))
         parser.add_argument(
             '--tenant-id',
             help=_('Tenant id for the physical port'))
@@ -113,7 +113,7 @@ class UpdatePhysicalPort(neutronv20.UpdateCommand):
                 'admin_state_up': parsed_args.admin_state,}, }
         neutronv20.update_dict(parsed_args, body[self.resource],
                                ['name', 'tenant_id', 'mac_address',
-                                'attachment', 'port_id'])
+                                'attachment', 'network_id'])
         return body
 
 class DeletePhysicalPort(neutronv20.DeleteCommand):
