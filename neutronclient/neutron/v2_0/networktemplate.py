@@ -19,11 +19,11 @@ import logging
 from neutronclient.neutron import v2_0 as neutronV20
 
 
-class ListServiceProvider(neutronV20.ListCommand):
+class ListNetworkTemplates(neutronV20.ListCommand):
     """List network templates."""
 
     resource = 'network_template'
-    log = logging.getLogger(__name__ + '.ListServiceProviders')
+    log = logging.getLogger(__name__ + '.ListNetworkTemplates')
     list_columns = ['name']
     _formatters = {}
     pagination_support = True
