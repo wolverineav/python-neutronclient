@@ -184,6 +184,7 @@ COMMAND_V2 = {
     'net-gateway-list': networkgateway.ListNetworkGateway,
     'net-gateway-connect': networkgateway.ConnectNetworkGateway,
     'net-gateway-disconnect': networkgateway.DisconnectNetworkGateway,
+    'net-template-list': networktemplate.ListNetworkTemplates,
     'gateway-device-create': networkgateway.CreateGatewayDevice,
     'gateway-device-update': networkgateway.UpdateGatewayDevice,
     'gateway-device-delete': networkgateway.DeleteGatewayDevice,

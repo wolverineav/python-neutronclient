@@ -202,6 +202,7 @@ class Client(object):
     network_profiles_path = "/network_profiles"
     network_profile_path = "/network_profiles/%s"
     network_profile_bindings_path = "/network_profile_bindings"
+    network_templates_path = "/network_template"
     policy_profiles_path = "/policy_profiles"
     policy_profile_path = "/policy_profiles/%s"
     policy_profile_bindings_path = "/policy_profile_bindings"
@@ -265,6 +266,11 @@ class Client(object):
         return {'plurals': self.EXTED_PLURALS,
                 'xmlns': constants.XML_NS_V20,
                 constants.EXT_NS: ns}
+
+    @APIParamsCall
+    def list_network_templates(self, **_params):
+        """Fetch list of network templates"""
+        return self.get(self.network_templates_path, params=_params)
 
     @APIParamsCall
     def get_quotas_tenant(self, **_params):
