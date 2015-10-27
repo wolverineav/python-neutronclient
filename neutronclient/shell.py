@@ -47,6 +47,7 @@ from neutronclient.neutron.v2_0 import metering
 from neutronclient.neutron.v2_0 import netpartition
 from neutronclient.neutron.v2_0 import network
 from neutronclient.neutron.v2_0 import networkprofile
+from neutronclient.neutron.v2_0 import networktemplate
 from neutronclient.neutron.v2_0.nsx import networkgateway
 from neutronclient.neutron.v2_0.nsx import qos_queue
 from neutronclient.neutron.v2_0 import policyprofile
